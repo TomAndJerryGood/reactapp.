@@ -12,10 +12,12 @@ const Pagination = ({
     }
   return (
     <div>Pagination
-        <button onClick={prevPageHandle}
+        {/* <button
+            className='prev' 
+              onClick={prevPageHandle}
               style={{ display : currentPage === 1 ?  "none" : "block"}}
-        > prev </button>
-        <ul className='pagination'
+        > prev </button> */}
+        <ul className='pagination' 
         >
         {
             pageNumbers.map(number=>(
@@ -23,9 +25,11 @@ const Pagination = ({
             ))
         }
         </ul>
-        <button onClick={nextPageHandle}
+        {/* <button 
+                className='next'
+                onClick={nextPageHandle}
                 style={{ display : currentPage === pageNumbers.length ?  "none" : "block"}}
-        > next </button>
+        > next </button> */}
     </div>
   )
 }

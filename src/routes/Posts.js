@@ -15,7 +15,8 @@ const Posts = () => {
     <div>
       {
         isPostsLoading ?  <div>Loading...</div> 
-        : <form  onSubmit={ e=>e.preventDefault() }>
+        : <form  className='search'
+                  onSubmit={ e=>e.preventDefault() }>
           <input type="text" 
                   id="search" 
                   onChange={ (e)=>setSearch(e.target.value) }
@@ -25,16 +26,20 @@ const Posts = () => {
         </form>
       }
       {
-        searchPosts.length &&  <ul>
+        searchPosts.length &&  <ul className='center-posts'>
             {
               searchPosts.map(post=>(
-                <li key={post.datetime}>
-                  <span>id : { post.id}</span>
-                  <Link to={`/posts/${post.id}`}>
-                      <span>{ post.title}</span>
-                  </Link>
-                  <span>{ post.body}</span>
-                  <span>{ post.datetime}</span>
+                <li
+                
+                key={post.datetime}>
+                  <span className='id'>id : { post.id}</span>
+                  <div class="border-radius border">
+                    <Link to={`/posts/${post.id}`}>
+                        <span className='lead-posts'>{ post.title}</span>
+                    </Link>
+                    <span className='posts border'>{ post.body}</span>
+                  </div>
+                  <span className='id'>{ post.datetime}</span>
                 </li>
               ))
             }

@@ -24,7 +24,7 @@
     border-radius: 50%;
 } 
 .tab-btns li.active{
-    background-color: lightgray;
+    background-color: skyblue;
 }
 .tab-contents{
     position: relative;

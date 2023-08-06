@@ -3,5 +3,22 @@ input{
     width: 200px;
     padding: 5px 10px; 
     margin-bottom: 5px;
+    
+}
+.login-container{
+    display: flex;
+    justify-content: center;
+  
+}
+.btns{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: yellow;
+    border-radius: 5px;
+}
+.login-color{
+    background-color: skyblue;
+    border-radius: 5px;
 }
 

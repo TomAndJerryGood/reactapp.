@@ -1,0 +1,9 @@
+.main{
+    height: 1000px;
+}
+.main:nth-child(2n){
+    background-color: pink;
+}
+.main:nth-child(2n+1){
+    background-color: skyblue;
+}

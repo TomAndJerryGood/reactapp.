@@ -1,7 +1,9 @@
 .coins-container{
     width:1200px; 
     margin: auto;
+   
 }
+
 
 .coins-container .coins-select{
     margin-bottom: 50px;
@@ -15,9 +17,27 @@
 
 .coins-container table{
     border-collapse: collapse;
+    text-align: center;
 }
+
 
 .coins-container td{
     border:1px solid gray; 
     padding: 5px  10px; 
+}
+.coin-se{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination.active{
+    background-color: skyblue;
+}
+.prev-next{
+    display: flex;
+    justify-content: space-between;
 }

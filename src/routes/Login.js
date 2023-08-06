@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import './Login.css'
 import { BsFillEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
+// 기본
 const Login = ({user, setUser}) => {
   const [ pwShow, setPwShow ] = useState(false);
   const useridRef = useRef();
@@ -31,13 +32,15 @@ const Login = ({user, setUser}) => {
       <form className='login-content'
             onSubmit={ (e)=>e.preventDefault()}
       >
-          <input  type="text" 
+          <input  className='login-color'
+                  type="text" 
                   placeholder='아이디'
                   autoFocus
                   id="user_id"
                   ref={useridRef}
           />
-          <input  type={ !pwShow ? "password" : "text"}
+          <input  className='login-color'
+                  type={ !pwShow ? "password" : "text"}
                   placeholder='비밀번호'
                   
                   id="user_pw"
@@ -51,7 +54,7 @@ const Login = ({user, setUser}) => {
           }
           </div>
           
-          <button onClick={ loginHandle }>로그인</button>
+          <button className='btns' onClick={ loginHandle }>로그인</button>
       </form>
     </div>
   )

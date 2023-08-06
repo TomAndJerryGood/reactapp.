@@ -44,8 +44,8 @@ const Coins = () => {
   }
 
   const navigate= useNavigate();
-  const coindetailHandle=(id)=>{
-      navigate(`/coins/${id}`);
+  const coindetailHandle=(symbol)=>{
+      navigate(`/coins/${symbol}`);
   }
 
   const prevPageHandle = ()=>{
@@ -59,78 +59,82 @@ const Coins = () => {
   }
   return (
     <div className='coins-container'>
-      {
-        isCoinsLoading ? "Loading..." : <h1> Coins TOP { coins.length }</h1>
-      }
-
-      {/* {
-        coins[0] && <div>
-            <div>
-              {
-                JSON.stringify(coins[0], null, "   " )
-              }
-            </div>
-
-        </div>
-      } */}
-
-      {
-         isCoinsLoading  ||  <select onChange={(e)=>selectHandle(e)}>
-               <option>코인을 선택하세요.</option>
+      
+        {
+          isCoinsLoading ? "Loading..." : <h1> Coins TOP { coins.length }</h1>
+        }
+        {/* {
+          coins[0] && <div>
+              <div>
+                {
+                  JSON.stringify(coins[0], null, "   " )
+                }
+              </div>
+          </div>
+        } */}
+        {
+           isCoinsLoading  ||  <select onChange={(e)=>selectHandle(e)}>
+                 <option>코인을 선택하세요.</option>
+            {
+                coins.map(coin=>(
+                  <option>{coin.symbol}</option>
+                ))
+            }
+           </select>
+        }
+        {
+          selectCoin && <div  className={selectCoin ? 'coins-select active' : 'coins-select'}>
+              <div>{selectCoin.rank} </div>
+              <div>{selectCoin.id} </div>
+              <div>{selectCoin.name} </div>
+              <div>{selectCoin.symbol} </div>
+              <div>{selectCoin.circulating_supply} </div>
+              {/* <div><ChartCompe /> </div> */}
+              <div>{selectCoin.total_supply} </div>
+          </div>
+        }
+        
+        <div class="coin-se">
+          <table>
+          <tr>
+              <td>rank </td>
+              <td>id </td>
+              <td>name   </td>
+              <td>symbol  </td>
+              <td>circulating_supply  </td>
+              <td>total_supply  </td>
+              {/* <td>charts  </td> */}
+              <td>자세히보기  </td>
+          </tr>
           {
-              coins.map(coin=>(
-                <option>{coin.symbol}</option>
-              ))
+            currentCoins && currentCoins.map(coin=>(
+                <tr>
+                    <td>{coin.rank} </td>
+                    <td>{coin.id} </td>
+                    <td>{coin.name} </td>
+                    <td>{coin.symbol} </td>
+                    <td>{coin.circulating_supply} </td>
+                    <td>{coin.total_supply} </td>
+                    {/* <td><ChartCompe /> </td> */}
+                    <td> <button onClick={ ()=>coindetailHandle(coin.symbol)}>자세히보기</button>  </td>
+                </tr>
+            ))
           }
-         </select>
-      }
-
-      {
-        selectCoin && <div  className={selectCoin ? 'coins-select active' : 'coins-select'}>
-            <div>{selectCoin.rank} </div>
-            <div>{selectCoin.id} </div>
-            <div>{selectCoin.name} </div>
-            <div>{selectCoin.symbol} </div>
-            <div>{selectCoin.circulating_supply} </div>
-            <div>{selectCoin.total_supply} </div>
+          </table>
         </div>
-      }
-
-      <div>
-        <button onClick={prevPageHandle}>이전 10</button>
-        <button onClick={nextPageHandle}>다음 10</button>
-      </div>
-      <table>
-      <tr>
-          <td>rank </td>
-          <td>id </td>
-          <td>name   </td>
-          <td>symbol  </td>
-          <td>circulating_supply  </td>
-          <td>total_supply  </td>
-      </tr>
-      {
-        currentCoins && currentCoins.map(coin=>(
-            <tr>
-                <td>{coin.rank} </td>
-                <td>{coin.id} </td>
-                <td>{coin.name} </td>
-                <td>{coin.symbol} </td>
-                <td>{coin.circulating_supply} </td>
-                <td>{coin.total_supply} </td>
-                <td> <button onClick={ ()=>coindetailHandle(coin.id)}>자세히보기</button>  </td>
-            </tr>
-        ))
-      }
-      </table>
-
-      <Pagination  currentPage={currentPage}
-                   setCurrentPage={setCurrentPage}
-                   postsPerPage={postsPerPage}
-                   setPostPerPage={setPostPerPage}
-                   prevPageHandle={prevPageHandle}
-                   nextPageHandle={nextPageHandle}
-      />
+        <div className='prev-next'>
+          <button onClick={prevPageHandle}>이전 10</button>
+          <button onClick={nextPageHandle}>다음 10</button>
+        </div>
+        <div className='pagination'>
+          <Pagination  currentPage={currentPage}
+                       setCurrentPage={setCurrentPage}
+                       postsPerPage={postsPerPage}
+                       setPostPerPage={setPostPerPage}
+                      //  prevPageHandle={prevPageHandle}
+                      //  nextPageHandle={nextPageHandle}
+          />
+        </div>
     </div>
   )
 }

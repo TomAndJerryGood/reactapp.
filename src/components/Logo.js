@@ -3,7 +3,7 @@ import './Logo.css'
 
 const Logo = () => {
   return (
-    <h1>Logo</h1>
+    <h1>$coin$</h1>
   )
 }
 
